@@ -3,6 +3,10 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+import axios from 'axios';
+
+const result = axios.get('https://api.github.com/users/Plofland');
+console.log(result);
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
