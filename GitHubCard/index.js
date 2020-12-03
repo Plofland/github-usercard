@@ -12,7 +12,7 @@ console.log(result);
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
-
+    DONE
     Skip to STEP 3.
 */
 
@@ -53,6 +53,56 @@ const followersArray = [];
       </div>
     </div>
 */
+
+// const cardHolder = document.querySelector();
+
+function cardMaker(data){
+  const divCard = document.createElement('div');
+  const cardImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const userName = document.createElement('h3');
+  const userHandle = document.createElement('p');
+  const userLocation = document.createElement('p');
+  const userProfile = document.createElement('p');
+  const userFollowers = document.createElement('p');
+  const userFollowing = document.createElement('p');
+  const userBio = document.createElement('p');
+  const profileLink = document.createElement('a')
+
+  divCard.appendChild(cardImg);
+  divCard.appendChild(cardInfo);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(userHandle);
+  cardInfo.appendChild(userLocation);
+  cardInfo.appendChild(userProfile);
+  userProfile.appendChild(profileLink);
+  cardInfo.appendChild(userFollowers);
+  cardInfo.appendChild(userFollowing);
+  cardInfo.appendChild(userBio);
+
+  divCard.classList.add("card");
+  cardInfo.classList.add("card-info");
+  userName.classList.add("name");
+  divCard.classList.add("username");
+
+  cardImg.src = data.avatar_url;
+  userName.textContent = data.name;
+  userHandle.textContent = data.login;
+  userLocation.textContent = `Location: ${data.location}`;
+  profileLink.href = data.blog;
+  profileLink.textContent = "Personal Portfolio";
+  userFollowers.textContent = data.followers;
+  userFollowing.textContent = data.followering;
+  userBio.textContent = data.bio;
+
+
+
+  return divCard;
+
+};
+
+
+// Place loop here to append all results from cardMaker to cardHolder
 
 /*
   List of LS Instructors Github username's:
