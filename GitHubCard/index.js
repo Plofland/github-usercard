@@ -32,7 +32,7 @@ console.log(result);
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -101,8 +101,17 @@ function cardMaker(data){
 
 };
 
+console.log(cardMaker(data));
 
 // Place loop here to append all results from cardMaker to cardHolder
+axios
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  })
+
 
 /*
   List of LS Instructors Github username's:
