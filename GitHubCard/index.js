@@ -37,9 +37,9 @@ function cardMaker(sucessfulCall){
   userHandle.textContent = sucessfulCall.login;
   userLocation.textContent = `Location: ${sucessfulCall.location}`;
   profileLink.href = sucessfulCall.blog;
-  profileLink.textContent = "Personal Portfolio";
-  userFollowers.textContent = sucessfulCall.followers;
-  userFollowing.textContent = sucessfulCall.followering;
+  profileLink.textContent = "Portfolio";
+  userFollowers.textContent = `Followers: ${sucessfulCall.followers}`;
+  userFollowing.textContent = `Following: ${sucessfulCall.followering}`;
   userBio.textContent = sucessfulCall.bio;
 
   return divCard;
