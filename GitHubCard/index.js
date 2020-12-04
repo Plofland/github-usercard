@@ -4,9 +4,8 @@
     https://api.github.com/users/<your name>
 */
 import axios from 'axios';
-
-const result = axios.get('https://api.github.com/users/Plofland');
-console.log(result);
+// const result = axios.get('https://api.github.com/users/Plofland/followers')
+// console.log(result);
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -54,9 +53,9 @@ console.log(result);
     </div>
 */
 
-// const cardHolder = document.querySelector();
+const cardHolder = document.querySelector('.cards');
 
-function cardMaker(data){
+function cardMaker(sucessfulCall){
   const divCard = document.createElement('div');
   const cardImg = document.createElement('img');
   const cardInfo = document.createElement('div');
@@ -85,15 +84,15 @@ function cardMaker(data){
   userName.classList.add("name");
   divCard.classList.add("username");
 
-  cardImg.src = data.avatar_url;
-  userName.textContent = data.name;
-  userHandle.textContent = data.login;
-  userLocation.textContent = `Location: ${data.location}`;
-  profileLink.href = data.blog;
+  cardImg.src = sucessfulCall.avatar_url;
+  userName.textContent = sucessfulCall.name;
+  userHandle.textContent = sucessfulCall.login;
+  userLocation.textContent = `Location: ${sucessfulCall.location}`;
+  profileLink.href = sucessfulCall.blog;
   profileLink.textContent = "Personal Portfolio";
-  userFollowers.textContent = data.followers;
-  userFollowing.textContent = data.followering;
-  userBio.textContent = data.bio;
+  userFollowers.textContent = sucessfulCall.followers;
+  userFollowing.textContent = sucessfulCall.followering;
+  userBio.textContent = sucessfulCall.bio;
 
 
 
@@ -101,16 +100,33 @@ function cardMaker(data){
 
 };
 
-console.log(cardMaker(data));
+// console.log(cardMaker(result));
 
 // Place loop here to append all results from cardMaker to cardHolder
-axios
-  .then(data => {
-    console.log(data);
+
+const friends = [
+  "Plofland",
+  "tetondan",
+  "oscfig",
+  "paulstgermain",
+  "aprilissy"
+];
+
+friends.forEach(eachFriend =>{
+  axios
+  .get(`https://api.github.com/users/${eachFriend}`)
+  .then(response => {
+    const result = response.data; 
+    const gitCard = cardMaker(result);
+    cardHolder.appendChild(gitCard)
   })
   .catch(error => {
     console.log(error);
-  })
+})
+})
+
+
+
 
 
 /*
